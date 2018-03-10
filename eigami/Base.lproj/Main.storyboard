@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movie List View Controller-->
+        <scene sceneID="DUG-ol-02e">
+            <objects>
+                <viewController storyboardIdentifier="MovieListViewController" id="qNS-Ou-Uo5" customClass="MovieListViewController" customModule="eigami" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="93h-5B-23M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oP1-ik-kvn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="caq-DE-6dc">
+                                    <size key="itemSize" width="100" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieListCellIdentifer" id="AG6-Ic-tZk" customClass="MovieListCell" customModule="eigami" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="0.0" width="100" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZ8-eF-aPC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NI-ca-FF1">
+                                                    <rect key="frame" x="65" y="129" width="42" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.2089190906" blue="0.080796915669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="hZ8-eF-aPC" firstAttribute="top" secondItem="AG6-Ic-tZk" secondAttribute="top" id="S4z-ZF-abk"/>
+                                            <constraint firstAttribute="bottom" secondItem="hZ8-eF-aPC" secondAttribute="bottom" id="WRc-Ve-L46"/>
+                                            <constraint firstAttribute="trailing" secondItem="hZ8-eF-aPC" secondAttribute="trailing" id="cTQ-CS-svr"/>
+                                            <constraint firstItem="hZ8-eF-aPC" firstAttribute="leading" secondItem="AG6-Ic-tZk" secondAttribute="leading" id="esH-f1-2hQ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="hZ8-eF-aPC" id="m4g-JK-aBz"/>
+                                            <outlet property="reviewsLabel" destination="9NI-ca-FF1" id="GqI-9b-3do"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oP1-ik-kvn" firstAttribute="top" secondItem="93h-5B-23M" secondAttribute="top" id="Kps-Tc-eqf"/>
+                            <constraint firstItem="oP1-ik-kvn" firstAttribute="leading" secondItem="1Ev-ZY-QWJ" secondAttribute="leading" id="Ymd-8i-Kjh"/>
+                            <constraint firstItem="oP1-ik-kvn" firstAttribute="bottom" secondItem="1Ev-ZY-QWJ" secondAttribute="bottom" id="bD4-AE-ubC"/>
+                            <constraint firstItem="oP1-ik-kvn" firstAttribute="trailing" secondItem="1Ev-ZY-QWJ" secondAttribute="trailing" id="gxW-4r-sAQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Ev-ZY-QWJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FRk-Ac-ohi"/>
+                    <connections>
+                        <outlet property="collectionView" destination="oP1-ik-kvn" id="fOK-Zb-M2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trI-WP-Oal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-402.39999999999998" y="76.911544227886068"/>
+        </scene>
+    </scenes>
+</document>
