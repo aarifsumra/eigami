@@ -153,6 +153,92 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		105BD95A20541A7B000BF1E3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				10B464FA204FA73800A5EA08 /* TMDBApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		105BD95B20541AEB000BF1E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10B46500204FB2A300A5EA08 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		105BD95C20541B09000BF1E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				10B46504204FCA7A00A5EA08 /* MovieListViewController.swift */,
+				100489B42053987500453AC2 /* MovieListCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		105BD95D20541B14000BF1E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				10B46508204FE36500A5EA08 /* MovieListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		105BD95E20541B1E000BF1E3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				100489A72051210700453AC2 /* RxDataSources+Sectioned.swift */,
+				100489A82051210800453AC2 /* UIScrollView+Rx.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		105BD95F20541B36000BF1E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10B4649B204F9B9600A5EA08 /* AppDelegate.swift */,
+				10B464A2204F9B9600A5EA08 /* Assets.xcassets */,
+				10B464A4204F9B9600A5EA08 /* LaunchScreen.storyboard */,
+				10B464A7204F9B9600A5EA08 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		105BD96020541B62000BF1E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10B464FE204FB0E300A5EA08 /* MovieSpec.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		105BD96120541B71000BF1E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				10B46502204FC9DE00A5EA08 /* MovieListViewControllerSpec.swift */,
+				100489B62053989700453AC2 /* MovieListCellSpec.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		105BD96220541B7D000BF1E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				10B46506204FE2B500A5EA08 /* MovieListViewModelSpec.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		105BD96320541BAB000BF1E3 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				10B4650E2050DA5500A5EA08 /* Stubber.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		10B4648F204F9B9600A5EA08 = {
 			isa = PBXGroup;
 			children = (
@@ -177,18 +263,13 @@
 		10B4649A204F9B9600A5EA08 /* eigami */ = {
 			isa = PBXGroup;
 			children = (
-				10B4649B204F9B9600A5EA08 /* AppDelegate.swift */,
-				10B464FA204FA73800A5EA08 /* TMDBApi.swift */,
-				10B46500204FB2A300A5EA08 /* Movie.swift */,
-				10B46504204FCA7A00A5EA08 /* MovieListViewController.swift */,
-				10B46508204FE36500A5EA08 /* MovieListViewModel.swift */,
-				100489B42053987500453AC2 /* MovieListCell.swift */,
-				100489A72051210700453AC2 /* RxDataSources+Sectioned.swift */,
-				100489A82051210800453AC2 /* UIScrollView+Rx.swift */,
+				105BD95A20541A7B000BF1E3 /* API */,
+				105BD95B20541AEB000BF1E3 /* Model */,
+				105BD95C20541B09000BF1E3 /* View */,
+				105BD95D20541B14000BF1E3 /* ViewModel */,
+				105BD95E20541B1E000BF1E3 /* Utils */,
 				10B4649F204F9B9600A5EA08 /* Main.storyboard */,
-				10B464A2204F9B9600A5EA08 /* Assets.xcassets */,
-				10B464A4204F9B9600A5EA08 /* LaunchScreen.storyboard */,
-				10B464A7204F9B9600A5EA08 /* Info.plist */,
+				105BD95F20541B36000BF1E3 /* Supporting Files */,
 			);
 			path = eigami;
 			sourceTree = "<group>";
@@ -198,11 +279,10 @@
 			children = (
 				10B464B2204F9B9600A5EA08 /* Info.plist */,
 				10B4650C2050DA2000A5EA08 /* SearchMovie.json */,
-				10B464FE204FB0E300A5EA08 /* MovieSpec.swift */,
-				10B46502204FC9DE00A5EA08 /* MovieListViewControllerSpec.swift */,
-				10B46506204FE2B500A5EA08 /* MovieListViewModelSpec.swift */,
-				100489B62053989700453AC2 /* MovieListCellSpec.swift */,
-				10B4650E2050DA5500A5EA08 /* Stubber.swift */,
+				105BD96320541BAB000BF1E3 /* Helper */,
+				105BD96020541B62000BF1E3 /* Model */,
+				105BD96120541B71000BF1E3 /* View */,
+				105BD96220541B7D000BF1E3 /* ViewModel */,
 			);
 			path = eigamiTests;
 			sourceTree = "<group>";
@@ -606,7 +686,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = eigami/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/eigami/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sumra.aarif.eigami;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -625,7 +705,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = eigami/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/eigami/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sumra.aarif.eigami;
 				PRODUCT_NAME = "$(TARGET_NAME)";
