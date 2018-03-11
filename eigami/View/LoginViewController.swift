@@ -47,9 +47,12 @@ fileprivate extension LoginViewController {
             .drive(loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
         viewModel.loginDone.asObservable()
-            .subscribe(onNext: { loginDone in
+            .subscribe(onNext: { [unowned self] loginDone in
                 if loginDone {
                     self.dismiss(animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Login Failed", message: "Please check email or password", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
