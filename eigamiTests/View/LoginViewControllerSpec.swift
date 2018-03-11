@@ -25,7 +25,8 @@ class LoginViewControllerSpec: QuickSpec {
                 scheduler = TestScheduler(initialClock: 0)
                 SharingScheduler.mock(scheduler: scheduler) {
                     sut = self.loadLoginViewController()
-                    sut.viewModel = LoginViewModel()
+                    let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
+                    sut.viewModel = LoginViewModel(provider: stubProvider)
                     _ = sut.view
                 }
                 disposeBag = DisposeBag()
@@ -73,7 +74,7 @@ class LoginViewControllerSpec: QuickSpec {
                         }
                         scheduler.start()
                         
-                        XCTAssertEqual(observer.events, [next(200, "Test")])
+                        XCTAssertEqual(observer.events, [next(100, ""), next(200, "Test")])
                     }
                     
                     it("sends event to viewmodel when user enters password") {
@@ -93,7 +94,7 @@ class LoginViewControllerSpec: QuickSpec {
                         }
                         scheduler.start()
                         
-                        XCTAssertEqual(observer.events, [next(200, "TestPassword")])
+                        XCTAssertEqual(observer.events, [next(100, ""), next(200, "TestPassword")])
                     }
                     it("sends tap event to viewmodel when user taps login button") {
                         let observer = scheduler.createObserver(Void.self)

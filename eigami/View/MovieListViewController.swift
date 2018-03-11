@@ -38,8 +38,8 @@ final class MovieListViewController: UIViewController {
         setupRefreshControl()
         setupNoResults()
         bindRx()
+        showFakeUserLogin()
     }
-    
 }
 // MARK:- Layout Configuration
 fileprivate extension MovieListViewController {
@@ -98,5 +98,16 @@ fileprivate extension MovieListViewController {
             .map { [Group<Movie>(header: "", items: $0)] }
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+    }
+}
+
+fileprivate extension MovieListViewController {
+    // Fake Login with
+    // email: "user@example.com"
+    // password: "password"
+    func showFakeUserLogin() {
+        let lvc = storyboard?.instantiateViewController(withIdentifier: LoginViewController.identifier) as! LoginViewController
+        lvc.viewModel = LoginViewModel(provider: TMDBprovider)
+        present(lvc, animated: true, completion: nil)
     }
 }
