@@ -13,6 +13,8 @@
 		100489B72053989700453AC2 /* MovieListCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100489B62053989700453AC2 /* MovieListCellSpec.swift */; };
 		105BD9652054C901000BF1E3 /* LoginViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105BD9642054C901000BF1E3 /* LoginViewControllerSpec.swift */; };
 		105BD9672054D2E8000BF1E3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105BD9662054D2E8000BF1E3 /* LoginViewController.swift */; };
+		105BD96B20551D7E000BF1E3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105BD96A20551D7E000BF1E3 /* LoginViewModel.swift */; };
+		105BD96D205571AA000BF1E3 /* LoginViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105BD96C205571AA000BF1E3 /* LoginViewModelSpec.swift */; };
 		10B4649C204F9B9600A5EA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B4649B204F9B9600A5EA08 /* AppDelegate.swift */; };
 		10B464A1204F9B9600A5EA08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B4649F204F9B9600A5EA08 /* Main.storyboard */; };
 		10B464A3204F9B9600A5EA08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B464A2204F9B9600A5EA08 /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		100489B62053989700453AC2 /* MovieListCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCellSpec.swift; sourceTree = "<group>"; };
 		105BD9642054C901000BF1E3 /* LoginViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerSpec.swift; sourceTree = "<group>"; };
 		105BD9662054D2E8000BF1E3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		105BD96A20551D7E000BF1E3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		105BD96C205571AA000BF1E3 /* LoginViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelSpec.swift; sourceTree = "<group>"; };
 		10B46498204F9B9600A5EA08 /* eigami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eigami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B4649B204F9B9600A5EA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10B464A0204F9B9600A5EA08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				10B46508204FE36500A5EA08 /* MovieListViewModel.swift */,
+				105BD96A20551D7E000BF1E3 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				10B46506204FE2B500A5EA08 /* MovieListViewModelSpec.swift */,
+				105BD96C205571AA000BF1E3 /* LoginViewModelSpec.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 			files = (
 				10B4649C204F9B9600A5EA08 /* AppDelegate.swift in Sources */,
 				10B465102050DB3D00A5EA08 /* Stubber.swift in Sources */,
+				105BD96B20551D7E000BF1E3 /* LoginViewModel.swift in Sources */,
 				100489A92051210800453AC2 /* RxDataSources+Sectioned.swift in Sources */,
 				10B464FB204FA73800A5EA08 /* TMDBApi.swift in Sources */,
 				10B46501204FB2A300A5EA08 /* Movie.swift in Sources */,
@@ -528,6 +535,7 @@
 				10B46503204FC9DE00A5EA08 /* MovieListViewControllerSpec.swift in Sources */,
 				100489B72053989700453AC2 /* MovieListCellSpec.swift in Sources */,
 				10B464FF204FB0E300A5EA08 /* MovieSpec.swift in Sources */,
+				105BD96D205571AA000BF1E3 /* LoginViewModelSpec.swift in Sources */,
 				10B46507204FE2B500A5EA08 /* MovieListViewModelSpec.swift in Sources */,
 				10B4650F2050DA5500A5EA08 /* Stubber.swift in Sources */,
 				105BD9652054C901000BF1E3 /* LoginViewControllerSpec.swift in Sources */,

@@ -9,14 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginViewModel {
-    
-    
-    let email = PublishSubject<String>()
-    let password = PublishSubject<String>()
-    let loginTap = PublishSubject<Void>()
-}
-
 class LoginViewController: UIViewController {
     static let identifier = "LoginViewControllerIdentifier"
     
@@ -40,6 +32,7 @@ class LoginViewController: UIViewController {
 
 fileprivate extension LoginViewController {
     func bindingRx() {
+        if viewModel == nil { return }
         emailTextField.rx.text.orEmpty
             .bind(to: viewModel.email)
             .disposed(by: disposeBag)
@@ -48,6 +41,17 @@ fileprivate extension LoginViewController {
             .disposed(by: disposeBag)
         loginButton.rx.tap
             .bind(to: viewModel.loginTap)
+            .disposed(by: disposeBag)
+        
+        viewModel.enableLogin
+            .drive(loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        viewModel.loginDone.asObservable()
+            .subscribe(onNext: { loginDone in
+                if loginDone {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
             .disposed(by: disposeBag)
     }
 }
