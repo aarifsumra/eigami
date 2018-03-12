@@ -24,16 +24,15 @@ final class MovieListViewController: UIViewController {
     var viewModel: MovieListViewModel!
     var searchBar: UISearchBar { return searchController.searchBar }
     
-    @IBOutlet weak var collectionView: UICollectionView! {
-        didSet {
-            let nib = UINib(nibName: "MovieListCell", bundle: nil)
-            collectionView.register(nib, forCellWithReuseIdentifier: MovieListCell.identifier)
-        }
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "MovieListCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: MovieListCell.identifier)
+        
         setupSearchController()
         setupRefreshControl()
         setupNoResults()
@@ -79,7 +78,7 @@ fileprivate extension MovieListViewController {
         convenience init() {
             self.init(
                 configureCell: { (ds, cv, ip, item) -> UICollectionViewCell  in
-                    let cell = cv.dequeueReusableCell(withReuseIdentifier: "MovieListCellIdentifer", for: ip) as! MovieListCell
+                    let cell = cv.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: ip) as! MovieListCell
                     cell.configure(forItem: item)
                     return cell
             })
