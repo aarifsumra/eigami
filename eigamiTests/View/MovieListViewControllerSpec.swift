@@ -108,9 +108,9 @@ class MovieListViewControllerSpec: QuickSpec {
                             
                             scheduler.start()
                             
-                            print(observer.events)
                             let result = observer.events.count
                             expect(result) == 1
+                            expect(sut.collectionView.numberOfItems(inSection: 0)) == 40
                         }
                         
                     }
