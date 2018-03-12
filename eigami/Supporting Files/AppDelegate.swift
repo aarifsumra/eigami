@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = windowRootViewController
         window.makeKeyAndVisible()
         self.window = window
-        ImageCache.default.maxMemoryCost = 1
     }
     
 }
