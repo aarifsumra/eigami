@@ -24,7 +24,12 @@ final class MovieListViewController: UIViewController {
     var viewModel: MovieListViewModel!
     var searchBar: UISearchBar { return searchController.searchBar }
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            let nib = UINib(nibName: "MovieListCell", bundle: nil)
+            collectionView.register(nib, forCellWithReuseIdentifier: MovieListCell.identifier)
+        }
+    }
     
     // MARK: Life Cycle
     override func viewDidLoad() {
