@@ -25,14 +25,12 @@ class MovieListViewControllerSpec: QuickSpec {
             beforeEach {
                 scheduler = TestScheduler(initialClock: 0)
                 SharingScheduler.mock(scheduler: scheduler) {
-                    sut = self.loadMovieListViewController()
+                    sut = UIStoryboard.main.movieListViewController
                     let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
                     sut.viewModel = MovieListViewModel(provider: stubProvider)
                     _ = sut.view
                 }
                 disposeBag = DisposeBag()
-                
-                
             }
             
             afterEach {
@@ -120,13 +118,4 @@ class MovieListViewControllerSpec: QuickSpec {
             }
         }
     }
-    
-    private func loadMovieListViewController() -> MovieListViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        return storyboard
-            .instantiateViewController(
-                withIdentifier: MovieListViewController.identifier
-            ) as! MovieListViewController
-    }
-    
 }

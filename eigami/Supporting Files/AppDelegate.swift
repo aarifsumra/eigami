@@ -15,14 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         let window = UIWindow()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let movieListVC = storyboard.instantiateViewController(withIdentifier: MovieListViewController.identifier) as! MovieListViewController
-        movieListVC.viewModel = MovieListViewModel(provider: TMDBprovider)
-        let nvc = UINavigationController(rootViewController: movieListVC)
-        window.rootViewController = nvc
+        window.rootViewController = windowRootViewController
         window.makeKeyAndVisible()
         self.window = window
         ImageCache.default.maxMemoryCost = 1
+    }
+    
+}
+
+fileprivate extension AppDelegate {
+    var windowRootViewController: UIViewController {
+        let movieListVC = UIStoryboard.main.movieListViewController
+        movieListVC.viewModel = MovieListViewModel(provider: TMDBprovider)
+        return UINavigationController(rootViewController: movieListVC)
     }
 }
 

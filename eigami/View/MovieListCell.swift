@@ -12,12 +12,10 @@ import Kingfisher
 class MovieListCell: UICollectionViewCell {
     static let identifier = "MovieListCellIdentifier"
     @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var reviewsLabel: UILabel!
     
     // MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        clearAll()
     }
     
     override func prepareForReuse() {
@@ -42,7 +40,7 @@ class MovieListCell: UICollectionViewCell {
 
 fileprivate extension MovieListCell {
     func clearAll() {
-        posterImageView.image = nil
-        reviewsLabel.text = nil
+        posterImageView.image = #imageLiteral(resourceName: "No_image_poster")
     }
 }
+
