@@ -40,6 +40,8 @@ class MovieListCell: UICollectionViewCell {
 
 fileprivate extension MovieListCell {
     func clearAll() {
+        // Cancel downloading of image and then reset
+        posterImageView.kf.cancelDownloadTask()
         posterImageView.image = #imageLiteral(resourceName: "No_image_poster")
     }
 }
