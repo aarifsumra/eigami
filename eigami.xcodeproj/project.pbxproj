@@ -45,6 +45,8 @@
 		10B4650F2050DA5500A5EA08 /* Stubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B4650E2050DA5500A5EA08 /* Stubber.swift */; };
 		10B465102050DB3D00A5EA08 /* Stubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B4650E2050DA5500A5EA08 /* Stubber.swift */; };
 		10B465112050F60600A5EA08 /* SearchMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 10B4650C2050DA2000A5EA08 /* SearchMovie.json */; };
+		24C4BCB8205D1933000B82BB /* ContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCB7205D1933000B82BB /* ContainerSpec.swift */; };
+		24C4BCBA205D19A5000B82BB /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCB9205D19A5000B82BB /* Container.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		10B46508204FE36500A5EA08 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		10B4650C2050DA2000A5EA08 /* SearchMovie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SearchMovie.json; sourceTree = "<group>"; };
 		10B4650E2050DA5500A5EA08 /* Stubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubber.swift; sourceTree = "<group>"; };
+		24C4BCB7205D1933000B82BB /* ContainerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSpec.swift; sourceTree = "<group>"; };
+		24C4BCB9205D19A5000B82BB /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,7 @@
 				100489A72051210700453AC2 /* RxDataSources+Sectioned.swift */,
 				100489A82051210800453AC2 /* UIScrollView+Rx.swift */,
 				103604C320561B6F00CDC62E /* UIStoryboard+Additions.swift */,
+				24C4BCB9205D19A5000B82BB /* Container.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				10B464B2204F9B9600A5EA08 /* Info.plist */,
 				10B4650C2050DA2000A5EA08 /* SearchMovie.json */,
 				103FAC32205A75FD00FD2338 /* AppDelegateSpec.swift */,
+				24C4BCB7205D1933000B82BB /* ContainerSpec.swift */,
 				105BD96320541BAB000BF1E3 /* Helper */,
 				105BD96020541B62000BF1E3 /* Model */,
 				105BD96120541B71000BF1E3 /* View */,
@@ -516,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				103604C72056289800CDC62E /* MovieListCell.swift in Sources */,
+				24C4BCBA205D19A5000B82BB /* Container.swift in Sources */,
 				10B4649C204F9B9600A5EA08 /* AppDelegate.swift in Sources */,
 				10B465102050DB3D00A5EA08 /* Stubber.swift in Sources */,
 				100489A92051210800453AC2 /* RxDataSources+Sectioned.swift in Sources */,
@@ -537,6 +544,7 @@
 				100489B72053989700453AC2 /* MovieListCellSpec.swift in Sources */,
 				10B464FF204FB0E300A5EA08 /* MovieSpec.swift in Sources */,
 				103FAC33205A75FD00FD2338 /* AppDelegateSpec.swift in Sources */,
+				24C4BCB8205D1933000B82BB /* ContainerSpec.swift in Sources */,
 				10B46507204FE2B500A5EA08 /* MovieListViewModelSpec.swift in Sources */,
 				10B4650F2050DA5500A5EA08 /* Stubber.swift in Sources */,
 			);
