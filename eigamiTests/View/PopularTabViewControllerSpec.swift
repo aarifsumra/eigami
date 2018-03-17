@@ -19,9 +19,7 @@ class PopularTabViewControllerSpec: QuickSpec {
         describe("Popular Tab") {
             var sut: PopularTabViewController!
             
-            beforeEach {
-                sut = 
-            }
+           
             
             
             it("has a title name popular") {
