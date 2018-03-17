@@ -15,5 +15,4 @@ before_install:
   - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
 
 script:
-  - xcodebuild test -project eigami.xcodeproj -scheme eigami -destination 'platform=Simulator,name=iPhone,OS=11.2'
-  
+  - xcodebuild test -project eigami.xcodeproj -scheme eigami -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.2'
