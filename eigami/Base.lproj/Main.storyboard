@@ -48,5 +48,21 @@
             </objects>
             <point key="canvasLocation" x="-402.39999999999998" y="76.911544227886068"/>
         </scene>
+        <!--Popular-->
+        <scene sceneID="BlI-Zl-8Rn">
+            <objects>
+                <viewController title="Popular" id="psZ-Dh-zYY" customClass="PopularTabViewController" customModule="eigami" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8zL-Hx-ixl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="voE-rq-mN7"/>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CwR-Hd-LFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="550" y="77"/>
+        </scene>
     </scenes>
 </document>
