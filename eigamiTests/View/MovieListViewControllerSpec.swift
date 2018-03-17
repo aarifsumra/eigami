@@ -114,6 +114,12 @@ class MovieListViewControllerSpec: QuickSpec {
                         }
                         
                     }
+                
+                    context("When user scrolls") {
+                        it("hides keyboard") {
+                            expect(sut.collectionView.keyboardDismissMode) == UIScrollViewKeyboardDismissMode.onDrag
+                        }
+                    }
                 }
             }
         }
