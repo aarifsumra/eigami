@@ -14,5 +14,8 @@ before_install:
   - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
 
-script:
-  - xcodebuild test -project eigami.xcodeproj -scheme eigami -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.2'
+script: 
+  - xctool -project eigami.xcodeproj -scheme eigamiTests build test -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
