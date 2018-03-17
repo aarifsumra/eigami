@@ -1,0 +1,11 @@
+language: swift
+xcode_project: eigami.xcodeproj # path to your xcodeproj folder
+xcode_scheme: eigami
+matrix:
+    include:
+        - osx_image: xcode9.2
+
+before_install:
+    - brew update
+    - brew install carthage
+    - carthage bootstrap --no-use-binaries --platform ios
