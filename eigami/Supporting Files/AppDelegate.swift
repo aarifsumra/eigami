@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
         window.tintColor = AppTintColor
         self.window = window
-        ImageCache.default.maxMemoryCost = 1
+//        ImageCache.default.maxMemoryCost = 1
     }
     
 }

@@ -79,7 +79,7 @@ fileprivate extension MovieListViewController {
         convenience init() {
             self.init(
                 configureCell: { (ds, cv, ip, item) -> UICollectionViewCell  in
-                    let cell = cv.dequeueReusableCell(withReuseIdentifier: MovieListViewController.identifier, for: ip) as! MovieListCell
+                    let cell = cv.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: ip) as! MovieListCell
                     cell.configure(forItem: item)
                     return cell
             })
