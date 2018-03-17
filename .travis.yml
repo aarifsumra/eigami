@@ -4,4 +4,4 @@ xcode_scheme: eigami
 before_install:
     - brew update
     - brew upgrade carthage
-    - carthage bootstrap --no-use-binaries --platform ios
+install: carthage bootstrap --no-use-binaries --configuration Release --platform iOS
