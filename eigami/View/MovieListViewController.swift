@@ -28,6 +28,7 @@ final class MovieListViewController: UIViewController {
         didSet {
             let nib = UINib(nibName: "MovieListCell", bundle: nil)
             collectionView.register(nib, forCellWithReuseIdentifier: MovieListCell.identifier)
+            collectionView.keyboardDismissMode = .onDrag
         }
     }
     
