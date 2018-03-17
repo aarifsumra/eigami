@@ -1,11 +1,6 @@
 # eigami
-------------
+
 [![Build Status](https://travis-ci.org/aarifsumra/eigami.svg?branch=develop)](https://travis-ci.org/aarifsumra/eigami)
-
-
-[![codecov](https://codecov.io/gh/aarifsumra/eigami/branch/develop/graph/badge.svg)](https://codecov.io/gh/aarifsumra/eigami)
-
-
 [![codecov](https://codecov.io/gh/aarifsumra/eigami/branch/develop/graph/badge.svg)](https://codecov.io/gh/aarifsumra/eigami)
 
 eigami(映画見) is a simple movie database application that harnesses the power of TMDbApi to display search results from over 28,000 entries.
