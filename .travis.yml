@@ -1,0 +1,18 @@
+language: swift
+
+xcode_project: eigami.xcodeproj 
+xcode_scheme: eigami
+
+osx_image: xcode9.2
+
+cache:
+  directories:
+  - Carthage
+  
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+
+script:
+  - xcodebuild test -project eigami.xcodeproj -scheme eigami -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.2'
