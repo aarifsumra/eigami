@@ -13,3 +13,7 @@ before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+
+script:
+  - xcodebuild test -project eigami.xcodeproj -scheme eigami -destination 'platform=Simulator,name=iPhone,OS=11.2'
+  
