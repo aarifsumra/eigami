@@ -13,6 +13,8 @@ class MovieListCell: UICollectionViewCell {
     static let identifier = "MovieListCellIdentifier"
     @IBOutlet weak var posterImageView: UIImageView!
     
+//    private task
+    
     // MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +28,6 @@ class MovieListCell: UICollectionViewCell {
     func configure(forItem item: Movie) {
         if let path = item.posterPath, let posterUrl = URL(string: "https://image.tmdb.org/t/p/w500" + path) {
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: posterUrl)
             posterImageView.kf.setImage(with: posterUrl, placeholder: #imageLiteral(resourceName: "No_image_poster"), completionHandler: {
                 (image, error, cacheType, imageUrl) in
                 if image == nil {
