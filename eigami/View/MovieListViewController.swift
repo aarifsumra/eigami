@@ -101,3 +101,13 @@ fileprivate extension MovieListViewController {
             .disposed(by: disposeBag)
     }
 }
+
+extension UIStoryboard {
+    var movieListViewController: MovieListViewController {
+        let identifier = MovieListViewController.identifier
+        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController else {
+            fatalError("MovieListViewController couldn't be found in Storyboard file")
+        }
+        return vc
+    }
+}

@@ -64,5 +64,35 @@
             </objects>
             <point key="canvasLocation" x="550" y="77"/>
         </scene>
+        <!--Popular Movie List View Controller-->
+        <scene sceneID="CBX-eE-n96">
+            <objects>
+                <viewController storyboardIdentifier="PopularMovieListViewController" id="V1L-pK-hBZ" customClass="PopularMovieListViewController" customModule="eigami" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="un4-sx-CAv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99453202414392305" green="1" blue="0.53439465606951608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="Mn8-fn-aNV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoV-pF-Lss" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="-309"/>
+        </scene>
+        <!--PopularTV List View Controller-->
+        <scene sceneID="dMO-5L-GAa">
+            <objects>
+                <viewController storyboardIdentifier="PopularTVListViewController" id="ROg-aE-YBL" customClass="PopularTVListViewController" customModule="eigami" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WWa-wY-HGd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.17060597182123027" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="31D-8a-Vz9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dW-GH-Xgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="412"/>
+        </scene>
     </scenes>
 </document>
