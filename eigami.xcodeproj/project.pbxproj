@@ -47,6 +47,11 @@
 		10B465112050F60600A5EA08 /* SearchMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 10B4650C2050DA2000A5EA08 /* SearchMovie.json */; };
 		24C4BCB8205D1933000B82BB /* ContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCB7205D1933000B82BB /* ContainerSpec.swift */; };
 		24C4BCBA205D19A5000B82BB /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCB9205D19A5000B82BB /* Container.swift */; };
+		24C4BCBC205D2F36000B82BB /* PopularTabViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCBB205D2F36000B82BB /* PopularTabViewControllerSpec.swift */; };
+		24C4BCBE205D3019000B82BB /* PopularTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCBD205D3019000B82BB /* PopularTabViewController.swift */; };
+		24C4BCC0205E16BB000B82BB /* PopularMovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCBF205E16BB000B82BB /* PopularMovieListViewController.swift */; };
+		24C4BCC2205E1A8F000B82BB /* PopularMovieListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCC1205E1A8F000B82BB /* PopularMovieListViewControllerSpec.swift */; };
+		24C4BCC4205E3912000B82BB /* PopularTVListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCC3205E3912000B82BB /* PopularTVListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +129,11 @@
 		10B4650E2050DA5500A5EA08 /* Stubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubber.swift; sourceTree = "<group>"; };
 		24C4BCB7205D1933000B82BB /* ContainerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSpec.swift; sourceTree = "<group>"; };
 		24C4BCB9205D19A5000B82BB /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		24C4BCBB205D2F36000B82BB /* PopularTabViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTabViewControllerSpec.swift; sourceTree = "<group>"; };
+		24C4BCBD205D3019000B82BB /* PopularTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTabViewController.swift; sourceTree = "<group>"; };
+		24C4BCBF205E16BB000B82BB /* PopularMovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieListViewController.swift; sourceTree = "<group>"; };
+		24C4BCC1205E1A8F000B82BB /* PopularMovieListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieListViewControllerSpec.swift; sourceTree = "<group>"; };
+		24C4BCC3205E3912000B82BB /* PopularTVListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTVListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +195,9 @@
 			isa = PBXGroup;
 			children = (
 				10B46504204FCA7A00A5EA08 /* MovieListViewController.swift */,
+				24C4BCBF205E16BB000B82BB /* PopularMovieListViewController.swift */,
+				24C4BCC3205E3912000B82BB /* PopularTVListViewController.swift */,
+				24C4BCBD205D3019000B82BB /* PopularTabViewController.swift */,
 				103604C52056289800CDC62E /* MovieListCell.swift */,
 				103604C62056289800CDC62E /* MovieListCell.xib */,
 			);
@@ -235,6 +248,8 @@
 			children = (
 				10B46502204FC9DE00A5EA08 /* MovieListViewControllerSpec.swift */,
 				100489B62053989700453AC2 /* MovieListCellSpec.swift */,
+				24C4BCBB205D2F36000B82BB /* PopularTabViewControllerSpec.swift */,
+				24C4BCC1205E1A8F000B82BB /* PopularMovieListViewControllerSpec.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -522,8 +537,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				103604C72056289800CDC62E /* MovieListCell.swift in Sources */,
+				24C4BCC0205E16BB000B82BB /* PopularMovieListViewController.swift in Sources */,
 				24C4BCBA205D19A5000B82BB /* Container.swift in Sources */,
 				10B4649C204F9B9600A5EA08 /* AppDelegate.swift in Sources */,
+				24C4BCBE205D3019000B82BB /* PopularTabViewController.swift in Sources */,
 				10B465102050DB3D00A5EA08 /* Stubber.swift in Sources */,
 				100489A92051210800453AC2 /* RxDataSources+Sectioned.swift in Sources */,
 				10B464FB204FA73800A5EA08 /* TMDBApi.swift in Sources */,
@@ -532,6 +549,7 @@
 				100489AA2051210800453AC2 /* UIScrollView+Rx.swift in Sources */,
 				103604C420561B6F00CDC62E /* UIStoryboard+Additions.swift in Sources */,
 				10B46505204FCA7A00A5EA08 /* MovieListViewController.swift in Sources */,
+				24C4BCC4205E3912000B82BB /* PopularTVListViewController.swift in Sources */,
 				10B46509204FE36500A5EA08 /* MovieListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,8 +561,10 @@
 				10B46503204FC9DE00A5EA08 /* MovieListViewControllerSpec.swift in Sources */,
 				100489B72053989700453AC2 /* MovieListCellSpec.swift in Sources */,
 				10B464FF204FB0E300A5EA08 /* MovieSpec.swift in Sources */,
+				24C4BCC2205E1A8F000B82BB /* PopularMovieListViewControllerSpec.swift in Sources */,
 				103FAC33205A75FD00FD2338 /* AppDelegateSpec.swift in Sources */,
 				24C4BCB8205D1933000B82BB /* ContainerSpec.swift in Sources */,
+				24C4BCBC205D2F36000B82BB /* PopularTabViewControllerSpec.swift in Sources */,
 				10B46507204FE2B500A5EA08 /* MovieListViewModelSpec.swift in Sources */,
 				10B4650F2050DA5500A5EA08 /* Stubber.swift in Sources */,
 			);
