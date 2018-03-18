@@ -19,11 +19,17 @@ class PopularTabViewControllerSpec: QuickSpec {
         describe("Popular Tab") {
             var sut: PopularTabViewController!
             
-           
+            beforeEach {
+                sut = UIStoryboard.main.popularTabViewController
+                _ = sut.view
+            }
             
+            it("has a storyboard identifier") {
+                expect(type(of: sut).identifier).notTo(beNil())
+            }
             
             it("has a title name popular") {
-                
+                expect(sut.title) == "Popular"
             }
         }
     }

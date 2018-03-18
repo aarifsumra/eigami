@@ -8,5 +8,10 @@
 import UIKit
 
 class PopularTabViewController: UIViewController {
+    static let identifier = "PopularTabViewController"
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }

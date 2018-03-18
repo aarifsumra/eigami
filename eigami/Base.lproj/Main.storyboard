@@ -51,7 +51,7 @@
         <!--Popular-->
         <scene sceneID="BlI-Zl-8Rn">
             <objects>
-                <viewController title="Popular" id="psZ-Dh-zYY" customClass="PopularTabViewController" customModule="eigami" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopularTabViewController" title="Popular" id="psZ-Dh-zYY" customClass="PopularTabViewController" customModule="eigami" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8zL-Hx-ixl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

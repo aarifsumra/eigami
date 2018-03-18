@@ -19,4 +19,12 @@ extension UIStoryboard {
         }
         return vc
     }
+    
+    var popularTabViewController: PopularTabViewController {
+        let identifier = PopularTabViewController.identifier
+        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? PopularTabViewController else {
+            fatalError("PopularTabViewController couldn't be found in Storyboard file")
+        }
+        return vc
+    }
 }
