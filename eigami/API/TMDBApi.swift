@@ -38,6 +38,7 @@ let TMDBprovider = MoyaProvider<TMDB>(
 public enum TMDB {
     case movie(id: Int)
     case searchMovie(query: String, page: Int)
+    case popularMovie(page: Int)
 }
 
 // MARK: Conform Target Type
@@ -55,6 +56,8 @@ extension TMDB: TargetType {
             return "/movie/\(id)"
         case .searchMovie:
             return "/search/movie"
+        case .popularMovie:
+            return "/movie/popular"
         }
     }
     
@@ -66,6 +69,8 @@ extension TMDB: TargetType {
         switch self {
         case .searchMovie:
             return Stubber.jsonDataFromFile("SearchMovie")
+        case .popularMovie:
+            return Stubber.jsonDataFromFile("PopularMovie")
         default:
             break
         }
@@ -82,6 +87,12 @@ extension TMDB: TargetType {
             )
         case .searchMovie(let query, let page):
             params["query"] = query
+            params["page"] = page
+            return .requestParameters(
+                parameters: params,
+                encoding: URLEncoding.default
+            )
+        case .popularMovie(let page):
             params["page"] = page
             return .requestParameters(
                 parameters: params,
