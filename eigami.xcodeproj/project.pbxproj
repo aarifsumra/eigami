@@ -55,6 +55,7 @@
 		24C4BCC8205E9BA4000B82BB /* PopularMovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCC7205E9BA4000B82BB /* PopularMovieListViewModel.swift */; };
 		24C4BCCA205E9D17000B82BB /* PopularMovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCC9205E9D17000B82BB /* PopularMovieListViewModel.swift */; };
 		24C4BCCC205E9EC5000B82BB /* PopularMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 24C4BCCB205E9EC5000B82BB /* PopularMovie.json */; };
+		24CE7A072061D5CC000E016F /* PopularMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 24C4BCCB205E9EC5000B82BB /* PopularMovie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -471,6 +472,7 @@
 			files = (
 				10B464A6204F9B9600A5EA08 /* LaunchScreen.storyboard in Resources */,
 				10B464A3204F9B9600A5EA08 /* Assets.xcassets in Resources */,
+				24CE7A072061D5CC000E016F /* PopularMovie.json in Resources */,
 				10B465112050F60600A5EA08 /* SearchMovie.json in Resources */,
 				103604C82056289800CDC62E /* MovieListCell.xib in Resources */,
 				10B464A1204F9B9600A5EA08 /* Main.storyboard in Resources */,
