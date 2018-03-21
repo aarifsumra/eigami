@@ -1,8 +1,9 @@
 //
-//  PopularMovieListViewModel.swift
+//  PopularMovieListViewModelSpec.swift
 //  eigamiTests
 //
 //  Created by Aarif Sumra on 2018/03/18.
+//  Copyright © 2018 Aarif Sumra. All rights reserved.
 //
 
 import Quick

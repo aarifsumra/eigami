@@ -3,6 +3,7 @@
 //  eigamiTests
 //
 //  Created by aarif on 2018/03/15.
+//  Copyright © 2018 Aarif Sumra. All rights reserved.
 //
 
 import Quick
