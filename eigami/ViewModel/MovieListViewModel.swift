@@ -24,6 +24,7 @@ class MovieListViewModel {
     // Private
     private let query: Variable<String>
     private let pageNo: Variable<Int>
+    private let totalPages: Variable<Int>
     private let movies: Variable<[Movie]>
     private let provider: MoyaProvider<TMDB>
     
@@ -39,6 +40,9 @@ class MovieListViewModel {
             .share()
             .asDriver(onErrorJustReturn: -1)
         
+        let totalPages = Variable(100)
+        self.totalPages = totalPages
+        
         let movies = Variable<[Movie]>([])
         self.movies = movies
         
@@ -52,6 +56,8 @@ class MovieListViewModel {
             .map { _ in () }
         
         let loadNext = loadMore.asObservable()
+            .filter { _ in pageNo.value < totalPages.value }
+            .debounce(0.3, scheduler: MainScheduler.instance)
             .do(onNext: { _ in
                 pageNo.value += 1
             })
@@ -66,6 +72,16 @@ class MovieListViewModel {
                 return provider.rx
                     .request(.searchMovie(query: query.value, page: pageNo.value + 1))
                     .retry(3)
+                    .do(onSuccess: { resp in
+                        if pageNo.value > 0 { return }
+                        do {
+                            let decoder = JSONDecoder()
+                            let data = try decoder.decode(ListAPIResponse.self, from: resp.data)
+                            totalPages.value = data.totalPages
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    })
                     .map([Movie].self, atKeyPath: "results")
                     .asDriver(onErrorJustReturn: [])
             }.do(onNext: {
@@ -79,4 +95,17 @@ class MovieListViewModel {
             .flatMap { _ in movies.asDriver() }
     }
     
+}
+
+fileprivate extension MovieListViewModel {
+
+    struct ListAPIResponse: Codable {
+        let totalPages: Int
+        let results: [Movie]
+
+        enum CodingKeys : String, CodingKey {
+            case totalPages = "total_pages"
+            case results
+        }
+    }
 }
