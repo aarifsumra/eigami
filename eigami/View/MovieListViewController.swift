@@ -20,6 +20,8 @@ final class MovieListViewController: UIViewController {
     private weak var refreshControl: UIRefreshControl!
     private weak var noResultsLabel: UILabel!
     private let dataSource = MovieListDataProvider()
+    fileprivate lazy var scheduler: SchedulerType! = MainScheduler.instance
+
     // Public
     var viewModel: MovieListViewModel!
     var searchBar: UISearchBar { return searchController.searchBar }
@@ -88,11 +90,13 @@ fileprivate extension MovieListViewController {
     }
     
     func bindRx() {
-        if viewModel == nil { return }
         searchBar.rx.text.orEmpty
+            .throttle(500, scheduler: scheduler)
+            .distinctUntilChanged()
             .bind(to: viewModel.search)
             .disposed(by: disposeBag)
         collectionView.rx.reachedBottom
+            .debounce(100, scheduler: scheduler)
             .bind(to:viewModel.loadMore)
             .disposed(by: disposeBag)
         viewModel.results.asObservable()
@@ -108,6 +112,15 @@ extension UIStoryboard {
         guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController else {
             fatalError("MovieListViewController couldn't be found in Storyboard file")
         }
+        return vc
+    }
+    
+    func movieListViewController(_ scheduler: SchedulerType = MainScheduler.instance) -> MovieListViewController {
+        let identifier = MovieListViewController.identifier
+        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController else {
+            fatalError("MovieListViewController couldn't be found in Storyboard file")
+        }
+        vc.scheduler = scheduler
         return vc
     }
 }

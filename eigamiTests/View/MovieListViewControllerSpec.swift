@@ -25,7 +25,7 @@ class MovieListViewControllerSpec: QuickSpec {
             beforeEach {
                 scheduler = TestScheduler(initialClock: 0)
                 SharingScheduler.mock(scheduler: scheduler) {
-                    sut = UIStoryboard.main.movieListViewController
+                    sut = UIStoryboard.main.movieListViewController(scheduler)
                     let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
                     sut.viewModel = MovieListViewModel(provider: stubProvider)
                     _ = sut.view
@@ -64,44 +64,46 @@ class MovieListViewControllerSpec: QuickSpec {
                         expect(sut.viewModel).notTo(beNil())
                     }
                     context("When entered or changed text in searchbar") {
-                        beforeEach {
-                            scheduler.scheduleAt(200) {
-                                let searchBar = sut.searchBar
-                                searchBar.text = "Test"
-                                searchBar.delegate!.searchBar!(searchBar, textDidChange: "Test")
-                            }
-                        }
-                        it("sends event to viewmodel when entered text on search bar") {
+
+                        it("sends throttled text API and gets back the results") {
+                            let searchBar = sut.searchBar
                             let observer = scheduler.createObserver(String.self)
                             
                             scheduler.scheduleAt(100) {
-                                sut.viewModel.search.asObservable()
+                                sut.viewModel.search
                                     .subscribe(observer)
                                     .disposed(by: disposeBag)
                             }
                             
+                            let time = [150, 210, 250, 310, 350, 410, 450, 900]
+                            let texts = ["a", "ab", "abc", "abcd", "abcde", "abcdef", "abcdefg", "zzzz"]
+                            for i in 0..<texts.count {
+                                scheduler.scheduleAt(time[i]) {
+                                    searchBar.text = texts[i]
+                                    searchBar.delegate!.searchBar!(searchBar, textDidChange: texts[i])
+                                }
+                            }
+                            
                             scheduler.start()
                             
-                            XCTAssertEqual(observer.events, [next(200, "Test")])
+                            let correct = Recorded.events(
+                                .next(500, "abcdefg"),
+                                .next(1000, "zzzz")
+                            )
                             
-                        }
-                        it("show collection view with 20 rows") {
-                            scheduler.start()
-                            
-                            let count = sut.collectionView.numberOfItems(inSection: 0)
-                            print(count)
-                            expect(count) == 20
+                            XCTAssertEqual(observer.events, correct)
+                            expect(sut.collectionView!.numberOfItems(inSection: 0)) == 20
+
                         }
                         it("sends load more command to viewmodel when reached bottom of collection view") {
+                            let searchBar = sut.searchBar
                             let observer = scheduler.createObserver(Void.self)
                             
-                            scheduler.scheduleAt(100) {
-                                sut.viewModel.loadMore
-                                    .subscribe(observer)
-                                    .disposed(by: disposeBag)
+                            scheduler.scheduleAt(400) {
+                                searchBar.text = "test"
+                                searchBar.delegate!.searchBar!(searchBar, textDidChange: "test")
                             }
-                            
-                            scheduler.scheduleAt(300) {
+                            scheduler.scheduleAt(600) {
                                 let ip = IndexPath(item: 19, section: 0)
                                 sut.collectionView.scrollToItem(at: ip, at: UICollectionViewScrollPosition.bottom, animated: false)
                             }
