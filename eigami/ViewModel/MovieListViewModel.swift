@@ -47,8 +47,6 @@ class MovieListViewModel {
         self.movies = movies
         
         let keyword = search.asDriver(onErrorJustReturn: "")
-            .throttle(0.5)
-            .distinctUntilChanged()
             .do(onNext: {
                 query.value = $0
                 pageNo.value = 0
@@ -57,7 +55,6 @@ class MovieListViewModel {
         
         let loadNext = loadMore.asObservable()
             .filter { _ in pageNo.value < totalPages.value }
-            .debounce(0.3, scheduler: MainScheduler.instance)
             .do(onNext: { _ in
                 pageNo.value += 1
             })
