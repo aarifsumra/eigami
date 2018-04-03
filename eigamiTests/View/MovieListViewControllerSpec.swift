@@ -29,8 +29,8 @@ class MovieListViewControllerSpec: QuickSpec {
                     let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
                     sut.viewModel = MovieListViewModel(provider: stubProvider)
                     _ = sut.view
+                    disposeBag = DisposeBag()
                 }
-                disposeBag = DisposeBag()
             }
             
             afterEach {
@@ -51,12 +51,9 @@ class MovieListViewControllerSpec: QuickSpec {
                         expect(sut.collectionView.refreshControl).notTo(beNil())
                     }
                     it("collection view has a no results found view as background view and is hidden") {
-                        if let label = sut.collectionView.backgroundView as? UILabel {
-                            expect(label).notTo(beNil())
-                            expect(label.isHidden).to(beTrue())
-                        } else {
-                            fail("Collection view background view not set to show 'no results' message")
-                        }
+                        let label = sut.collectionView.backgroundView as! UILabel
+                        expect(label).notTo(beNil())
+                        expect(label.isHidden).to(beTrue())
                     }
                 }
                 describe("Behaviour") {
@@ -64,11 +61,8 @@ class MovieListViewControllerSpec: QuickSpec {
                         expect(sut.viewModel).notTo(beNil())
                     }
                     context("When entered or changed text in searchbar") {
-
                         it("sends throttled text API and gets back the results") {
-                            let searchBar = sut.searchBar
                             let observer = scheduler.createObserver(String.self)
-                            
                             scheduler.scheduleAt(100) {
                                 sut.viewModel.search
                                     .subscribe(observer)
@@ -77,6 +71,7 @@ class MovieListViewControllerSpec: QuickSpec {
                             
                             let time = [150, 210, 250, 310, 350, 410, 450, 900]
                             let texts = ["a", "ab", "abc", "abcd", "abcde", "abcdef", "abcdefg", "zzzz"]
+                            let searchBar = sut.searchBar
                             for i in 0..<texts.count {
                                 scheduler.scheduleAt(time[i]) {
                                     searchBar.text = texts[i]
@@ -93,13 +88,16 @@ class MovieListViewControllerSpec: QuickSpec {
                             
                             XCTAssertEqual(observer.events, correct)
                             expect(sut.collectionView!.numberOfItems(inSection: 0)) == 20
-
                         }
                         it("sends load more command to viewmodel when reached bottom of collection view") {
-                            let searchBar = sut.searchBar
                             let observer = scheduler.createObserver(Void.self)
-                            
-                            scheduler.scheduleAt(400) {
+                            scheduler.scheduleAt(100) {
+                                sut.viewModel.loadMore
+                                    .subscribe(observer)
+                                    .disposed(by: disposeBag)
+                            }
+                            scheduler.scheduleAt(200) {
+                                let searchBar = sut.searchBar
                                 searchBar.text = "test"
                                 searchBar.delegate!.searchBar!(searchBar, textDidChange: "test")
                             }
@@ -108,15 +106,13 @@ class MovieListViewControllerSpec: QuickSpec {
                                 sut.collectionView.scrollToItem(at: ip, at: UICollectionViewScrollPosition.bottom, animated: false)
                             }
                             
-                            scheduler.start()
+                            let result = scheduler.start {
+                                sut.viewModel.loadMore.asObservable()
+                            }
                             
-                            print(observer.events)
-                            let result = observer.events.count
-                            expect(result) == 1
+                            expect(result.events.count) == 1
                         }
-                        
                     }
-                
                     context("When user scrolls") {
                         it("hides keyboard") {
                             expect(sut.collectionView.keyboardDismissMode) == UIScrollViewKeyboardDismissMode.onDrag
