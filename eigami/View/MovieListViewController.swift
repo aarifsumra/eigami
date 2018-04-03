@@ -14,15 +14,16 @@ final class MovieListViewController: UIViewController {
     // Statics
     static var identifier = "MovieListViewController"
     
+    // Public
+    var viewModel: MovieListViewModel!
+    var searchBar: UISearchBar { return searchController.searchBar }
+    
     // Private
     private let disposeBag = DisposeBag()
     private var searchController: UISearchController!
     private weak var refreshControl: UIRefreshControl!
     private weak var noResultsLabel: UILabel!
     private let dataSource = MovieListDataProvider()
-    // Public
-    var viewModel: MovieListViewModel!
-    var searchBar: UISearchBar { return searchController.searchBar }
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {

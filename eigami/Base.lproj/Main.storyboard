@@ -71,13 +71,35 @@
                     <view key="view" contentMode="scaleToFill" id="un4-sx-CAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TsE-TT-htA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SQi-ah-eE6">
+                                    <size key="itemSize" width="100" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="0.99453202414392305" green="1" blue="0.53439465606951608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="TsE-TT-htA" firstAttribute="leading" secondItem="Mn8-fn-aNV" secondAttribute="leading" id="2sp-qV-Nlu"/>
+                            <constraint firstItem="TsE-TT-htA" firstAttribute="trailing" secondItem="Mn8-fn-aNV" secondAttribute="trailing" id="YFv-k6-wfz"/>
+                            <constraint firstItem="TsE-TT-htA" firstAttribute="top" secondItem="un4-sx-CAv" secondAttribute="top" id="aKt-WT-VRB"/>
+                            <constraint firstItem="TsE-TT-htA" firstAttribute="bottom" secondItem="Mn8-fn-aNV" secondAttribute="bottom" id="bC9-VV-qsV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Mn8-fn-aNV"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="TsE-TT-htA" id="wVU-SF-Dkk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoV-pF-Lss" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="-309"/>
+            <point key="canvasLocation" x="1276" y="-309.89505247376314"/>
         </scene>
         <!--PopularTV List View Controller-->
         <scene sceneID="dMO-5L-GAa">
