@@ -45,6 +45,7 @@
 		10B4650F2050DA5500A5EA08 /* Stubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B4650E2050DA5500A5EA08 /* Stubber.swift */; };
 		10B465102050DB3D00A5EA08 /* Stubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B4650E2050DA5500A5EA08 /* Stubber.swift */; };
 		10B465112050F60600A5EA08 /* SearchMovie.json in Resources */ = {isa = PBXBuildFile; fileRef = 10B4650C2050DA2000A5EA08 /* SearchMovie.json */; };
+		2488785E2073C2B2005331A9 /* MovieListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488785D2073C2B2005331A9 /* MovieListDataProvider.swift */; };
 		24C4BCB8205D1933000B82BB /* ContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCB7205D1933000B82BB /* ContainerSpec.swift */; };
 		24C4BCBA205D19A5000B82BB /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCB9205D19A5000B82BB /* Container.swift */; };
 		24C4BCBC205D2F36000B82BB /* PopularTabViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4BCBB205D2F36000B82BB /* PopularTabViewControllerSpec.swift */; };
@@ -127,6 +128,7 @@
 		10B46508204FE36500A5EA08 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		10B4650C2050DA2000A5EA08 /* SearchMovie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SearchMovie.json; sourceTree = "<group>"; };
 		10B4650E2050DA5500A5EA08 /* Stubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubber.swift; sourceTree = "<group>"; };
+		2488785D2073C2B2005331A9 /* MovieListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataProvider.swift; sourceTree = "<group>"; };
 		24C4BCB7205D1933000B82BB /* ContainerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSpec.swift; sourceTree = "<group>"; };
 		24C4BCB9205D19A5000B82BB /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		24C4BCBB205D2F36000B82BB /* PopularTabViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTabViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				24C4BCBD205D3019000B82BB /* PopularTabViewController.swift */,
 				103604C52056289800CDC62E /* MovieListCell.swift */,
 				103604C62056289800CDC62E /* MovieListCell.xib */,
+				2488785D2073C2B2005331A9 /* MovieListDataProvider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				24C4BCBE205D3019000B82BB /* PopularTabViewController.swift in Sources */,
 				10B465102050DB3D00A5EA08 /* Stubber.swift in Sources */,
 				100489A92051210800453AC2 /* RxDataSources+Sectioned.swift in Sources */,
+				2488785E2073C2B2005331A9 /* MovieListDataProvider.swift in Sources */,
 				10B464FB204FA73800A5EA08 /* TMDBApi.swift in Sources */,
 				103FAC35205A7C7D00FD2338 /* Globals.swift in Sources */,
 				10B46501204FB2A300A5EA08 /* Movie.swift in Sources */,
