@@ -19,28 +19,18 @@ class MovieListViewControllerSpec: QuickSpec {
     override func spec() {
         describe("List of Movie") {
             var sut: MovieListViewController!
-            var scheduler: TestScheduler!
-            var disposeBag: DisposeBag!
-            
-            beforeEach {
-                scheduler = TestScheduler(initialClock: 0)
-                SharingScheduler.mock(scheduler: scheduler) {
-                    sut = UIStoryboard.main.movieListViewController(scheduler)
-                    let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
-                    sut.viewModel = MovieListViewModel(provider: stubProvider)
-                    _ = sut.view
-                    disposeBag = DisposeBag()
-                }
-            }
-            
-            afterEach {
-                scheduler = nil
-                sut = nil
-                disposeBag = nil
-            }
             
             context("after view did load") {
                 describe("Layout") {
+                    beforeEach {
+                        sut = UIStoryboard.main.movieListViewController()
+                        let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
+                        sut.viewModel = MovieListViewModel(provider: stubProvider)
+                        _ = sut.view
+                    }
+                    afterEach {
+                        sut = nil
+                    }
                     it("has a search bar in navigation item to search for movies") {
                         expect(sut.navigationItem.titleView).to(beAnInstanceOf(UISearchBar.self))
                     }
@@ -57,20 +47,34 @@ class MovieListViewControllerSpec: QuickSpec {
                     }
                 }
                 describe("Behaviour") {
-                    it("has a view model") {
-                        expect(sut.viewModel).notTo(beNil())
-                    }
                     context("When entered or changed text in searchbar") {
-                        it("sends throttled text API and gets back the results") {
-                            let observer = scheduler.createObserver(String.self)
-                            scheduler.scheduleAt(100) {
-                                sut.viewModel.search
-                                    .subscribe(observer)
-                                    .disposed(by: disposeBag)
+                        var scheduler: TestScheduler!
+                        var disposeBag: DisposeBag!
+                        beforeEach {
+                            scheduler = TestScheduler(initialClock: 0, resolution: 1/1000)
+                            SharingScheduler.mock(scheduler: scheduler) {
+                                sut = UIStoryboard.main.movieListViewController(scheduler)
+                                let stubProvider = MoyaProvider<TMDB>(stubClosure: MoyaProvider.immediatelyStub)
+                                sut.viewModel = MovieListViewModel(provider: stubProvider)
+                                _ = sut.view
+                                disposeBag = DisposeBag()
                             }
-                            
-                            let time = [150, 210, 250, 310, 350, 410, 450, 900]
-                            let texts = ["a", "ab", "abc", "abcd", "abcde", "abcdef", "abcdefg", "zzzz"]
+                        }
+                        afterEach {
+                            scheduler = nil
+                            sut = nil
+                            disposeBag = nil
+                        }
+                        it("has a view model") {
+                            expect(sut.viewModel).notTo(beNil())
+                        }
+                        it("hides keyboard when user scrolls") {
+                            expect(sut.collectionView.keyboardDismissMode) == UIScrollViewKeyboardDismissMode.onDrag
+                        }
+                        
+                        it("sends throttled text API and gets back the results") {
+                            let time = [100, 200, 300, 400, 500, 600, 700, 800]
+                            let texts = ["a", "ab", "abcd", "abcd", "abcd", "abcdef", "abcdefg"]
                             let searchBar = sut.searchBar
                             for i in 0..<texts.count {
                                 scheduler.scheduleAt(time[i]) {
@@ -79,29 +83,26 @@ class MovieListViewControllerSpec: QuickSpec {
                                 }
                             }
                             
-                            scheduler.start()
+                            let res = scheduler.start {
+                                sut.viewModel.search.asObservable()
+                            }
                             
                             let correct = Recorded.events(
-                                .next(500, "abcdefg"),
-                                .next(1000, "zzzz")
+                                .next(300, "abcd"),
+                                .next(600, "abcdef"),
+                                .next(900, "abcdefg")
                             )
                             
-                            XCTAssertEqual(observer.events, correct)
+                            XCTAssertEqual(res.events, correct)
                             expect(sut.collectionView!.numberOfItems(inSection: 0)) == 20
                         }
                         it("sends load more command to viewmodel when reached bottom of collection view") {
-                            let observer = scheduler.createObserver(Void.self)
-                            scheduler.scheduleAt(100) {
-                                sut.viewModel.loadMore
-                                    .subscribe(observer)
-                                    .disposed(by: disposeBag)
-                            }
-                            scheduler.scheduleAt(200) {
+                            scheduler.scheduleAt(210) {
                                 let searchBar = sut.searchBar
                                 searchBar.text = "test"
                                 searchBar.delegate!.searchBar!(searchBar, textDidChange: "test")
                             }
-                            scheduler.scheduleAt(600) {
+                            scheduler.scheduleAt(500) {
                                 let ip = IndexPath(item: 19, section: 0)
                                 sut.collectionView.scrollToItem(at: ip, at: UICollectionViewScrollPosition.bottom, animated: false)
                             }
@@ -111,11 +112,6 @@ class MovieListViewControllerSpec: QuickSpec {
                             }
                             
                             expect(result.events.count) == 1
-                        }
-                    }
-                    context("When user scrolls") {
-                        it("hides keyboard") {
-                            expect(sut.collectionView.keyboardDismissMode) == UIScrollViewKeyboardDismissMode.onDrag
                         }
                     }
                 }

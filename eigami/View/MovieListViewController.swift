@@ -77,15 +77,14 @@ fileprivate extension MovieListViewController {
 }
 
 fileprivate extension MovieListViewController {
-    
     func bindRx() {
         searchBar.rx.text.orEmpty
-            .throttle(500, scheduler: scheduler)
+            .throttle(0.3, scheduler: scheduler)
             .distinctUntilChanged()
             .bind(to: viewModel.search)
             .disposed(by: disposeBag)
         collectionView.rx.reachedBottom
-            .debounce(100, scheduler: scheduler)
+            .debounce(0.1, scheduler: scheduler)
             .bind(to:viewModel.loadMore)
             .disposed(by: disposeBag)
         viewModel.results.asObservable()
@@ -98,18 +97,22 @@ fileprivate extension MovieListViewController {
 extension UIStoryboard {
     var movieListViewController: MovieListViewController {
         let identifier = MovieListViewController.identifier
-        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController else {
+        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController
+        else {
             fatalError("MovieListViewController couldn't be found in Storyboard file")
         }
         return vc
     }
     
-    func movieListViewController(_ scheduler: SchedulerType = MainScheduler.instance) -> MovieListViewController {
+    func movieListViewController(_ scheduler: SchedulerType? = nil) -> MovieListViewController {
         let identifier = MovieListViewController.identifier
-        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController else {
+        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController
+        else {
             fatalError("MovieListViewController couldn't be found in Storyboard file")
         }
-        vc.scheduler = scheduler
+        if let scheduler = scheduler {
+            vc.scheduler = scheduler
+        }
         return vc
     }
 }
