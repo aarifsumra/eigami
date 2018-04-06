@@ -38,6 +38,12 @@ class MovieListCellSpec: QuickSpec {
                     cv = MockCollectionView()
                     sut = cv.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: IndexPath(row: 0, section: 0)) as! MovieListCell
                 }
+                it("can be configured with movie item") {
+                    let movie = Movie(id: 1, title: "test", posterPath: "/test")
+                    sut.configure(forItem: movie)
+                    let posterURLString = sut.posterImageView.kf.webURL!.absoluteString
+                    expect(posterURLString) == "https://image.tmdb.org/t/p/w500" + "/test"
+                }
                 it("cancels image download task when reused") {
                     ImageCache.default.clearDiskCache()
                     waitUntil(timeout: 1.0) { done in

@@ -61,18 +61,6 @@ fileprivate extension PopularMovieListViewController {
 }
 
 fileprivate extension PopularMovieListViewController {
-    
-    class MovieListDataProvider: RxCollectionViewSectionedReloadDataSource<Group<Movie>> {
-        convenience init() {
-            self.init(
-                configureCell: { (ds, cv, ip, item) -> UICollectionViewCell  in
-                    let cell = cv.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: ip) as! MovieListCell
-                    cell.configure(forItem: item)
-                    return cell
-            })
-        }
-    }
-    
     func bindRx() {
         collectionView.rx.reachedBottom
             .bind(to:viewModel.loadMore)

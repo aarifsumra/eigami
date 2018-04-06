@@ -14,16 +14,17 @@ final class MovieListViewController: UIViewController {
     // Statics
     static var identifier = "MovieListViewController"
     
-    // Public
-    var viewModel: MovieListViewModel!
-    var searchBar: UISearchBar { return searchController.searchBar }
-    
     // Private
     private let disposeBag = DisposeBag()
     private var searchController: UISearchController!
     private weak var refreshControl: UIRefreshControl!
     private weak var noResultsLabel: UILabel!
     private let dataSource = MovieListDataProvider()
+    fileprivate lazy var scheduler: SchedulerType! = MainScheduler.instance
+
+    // Public
+    var viewModel: MovieListViewModel!
+    var searchBar: UISearchBar { return searchController.searchBar }
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -76,24 +77,14 @@ fileprivate extension MovieListViewController {
 }
 
 fileprivate extension MovieListViewController {
-    
-    class MovieListDataProvider: RxCollectionViewSectionedReloadDataSource<Group<Movie>> {
-        convenience init() {
-            self.init(
-                configureCell: { (ds, cv, ip, item) -> UICollectionViewCell  in
-                    let cell = cv.dequeueReusableCell(withReuseIdentifier: MovieListCell.identifier, for: ip) as! MovieListCell
-                    cell.configure(forItem: item)
-                    return cell
-            })
-        }
-    }
-    
     func bindRx() {
-        if viewModel == nil { return }
         searchBar.rx.text.orEmpty
+            .throttle(0.3, scheduler: scheduler)
+            .distinctUntilChanged()
             .bind(to: viewModel.search)
             .disposed(by: disposeBag)
         collectionView.rx.reachedBottom
+            .debounce(0.1, scheduler: scheduler)
             .bind(to:viewModel.loadMore)
             .disposed(by: disposeBag)
         viewModel.results.asObservable()
@@ -104,10 +95,14 @@ fileprivate extension MovieListViewController {
 }
 
 extension UIStoryboard {
-    var movieListViewController: MovieListViewController {
+    func movieListViewController(_ scheduler: SchedulerType? = nil) -> MovieListViewController {
         let identifier = MovieListViewController.identifier
-        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController else {
+        guard let vc = self.instantiateViewController(withIdentifier: identifier) as? MovieListViewController
+        else {
             fatalError("MovieListViewController couldn't be found in Storyboard file")
+        }
+        if let scheduler = scheduler {
+            vc.scheduler = scheduler
         }
         return vc
     }
