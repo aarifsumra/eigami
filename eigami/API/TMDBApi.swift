@@ -11,7 +11,7 @@ import Moya
 // MARK: Privates
 fileprivate let apiURLString = "https://api.themoviedb.org/3"
 fileprivate let defaultParams: [String : Any] = [
-    "api_key": "b8d97e85cc1b1a18c1ebcef21f7a0123",
+    "api_key": "YOUR_TMDB_API_KEY",
     "language": "en-US",
     "include_adult": false
 ]
