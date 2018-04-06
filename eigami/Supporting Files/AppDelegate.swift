@@ -28,7 +28,7 @@ fileprivate extension AppDelegate {
     
     var windowRootViewController: UIViewController {
         // Tab 1
-        let movieListVC = UIStoryboard.main.movieListViewController
+        let movieListVC = UIStoryboard.main.movieListViewController()
         movieListVC.viewModel = MovieListViewModel(provider: TMDBprovider)
         let tab1 = UINavigationController(rootViewController: movieListVC)
         // Tab 2
